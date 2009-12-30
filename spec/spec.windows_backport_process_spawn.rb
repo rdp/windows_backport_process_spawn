@@ -1,6 +1,6 @@
 require 'spec/autorun'
 require 'sane'
-require_rel '../lib/backport_process_spawn'
+require_rel '../lib/windows_backport_process_spawn'
 require 'fileutils'
 
 describe "process spawn" do
@@ -15,6 +15,7 @@ describe "process spawn" do
     Process.spawn 'ls', :out => 'out'
     sleep 0.05
     assert File.exist?('out')
+    assert File.read('out').length > 0
   end
 
 end
